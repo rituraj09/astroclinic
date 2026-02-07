@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Astro-Clinic | Align Your Destiny</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --gold:#ffd700;
+    --dark:#06000f;
+    --glass:rgba(255,255,255,0.08);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#000;
+    color:#fff;
+}
+
+/* ================= HEADER ================= */
+header{
+    position:fixed;
+    top:0;left:0;
+    width:100%;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+    transition:0.4s;
+}
+
+header.scrolled{
+    background:rgba(0,0,0,0.7);
+    backdrop-filter:blur(10px);
+    padding:10px 8%;
+}
+
+.logo{
+    font-family:'Cinzel',serif;
+    font-size:1.8rem;
+    color:var(--gold);
+    letter-spacing:2px;
+}
+
+nav a{
+    margin-left:25px;
+    text-decoration:none;
+    color:#fff;
+    font-size:0.9rem;
+    position:relative;
+}
+nav a::after{
+    content:'';
+    position:absolute;
+    left:0;bottom:-5px;
+    width:0;height:2px;
+    background:var(--gold);
+    transition:0.3s;
+}
+nav a:hover::after{width:100%;}
+
+/* ================= HERO ================= */
+.hero{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
+.hero video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.hero::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+}
+.hero-content{
+    position:relative;
+    z-index:2;
+    height:100%;
+    display:flex;
+    align-items:center;
+    padding-left:8%;
+}
+.hero-content h1{
+    font-family:'Cinzel',serif;
+    font-size:3.5rem;
+    color:var(--gold);
+}
+.hero-content p{margin:15px 0;font-size:1.2rem;max-width:520px;}
+.hero-content span{font-size:0.9rem;color:#ffdd88;}
+
+/* ================= FLOATING BUTTONS ================= */
+.fab{
+    position:fixed;
+    right:20px;
+    z-index:20;
+}
+.call-btn{
+    bottom:90px;
+    background:linear-gradient(135deg,#00e676,#00c853);
+}
+.whatsapp-btn{
+    bottom:20px;
+    background:linear-gradient(135deg,#25D366,#128C7E);
+}
+.fab a{
+    width:58px;height:58px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    color:#fff;
+    font-size:26px;
+    text-decoration:none;
+    box-shadow:0 0 25px rgba(0,0,0,0.5);
+    transition:0.3s;
+}
+.fab a:hover{transform:scale(1.1);}
+
+/* ================= SECTIONS ================= */
+section{padding:90px 8%;background:var(--dark);}
+.section-title{text-align:center;margin-bottom:50px;}
+.section-title h2{
+    font-family:'Cinzel',serif;
+    color:var(--gold);
+    font-size:2.4rem;
+}
+
+/* ================= ABOUT ================= */
+.about-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+.glass{
+    background:var(--glass);
+    backdrop-filter:blur(12px);
+    border-radius:16px;
+    padding:30px;
+}
+
+/* ================= SERVICES ================= */
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:25px;
+}
+.service-card{
+    position:relative;
+    height:260px;
+    border-radius:18px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:0.4s;
+}
+.service-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.service-card::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.55);
+}
+.service-card span{
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    z-index:2;
+    font-family:'Cinzel',serif;
+    font-size:1.2rem;
+    color:var(--gold);
+}
+.service-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 30px rgba(255,215,0,0.25);
+}
+
+/* ================= MODAL ================= */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.8);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:50;
+}
+.modal-content{
+    background:#0d001a;
+    padding:35px;
+    border-radius:18px;
+    max-width:500px;
+    text-align:center;
+}
+.modal-content h3{
+    font-family:'Cinzel',serif;
+    color:var(--gold);
+    margin-bottom:15px;
+}
+.modal-content button{
+    margin-top:20px;
+    padding:10px 25px;
+    border:none;
+    background:var(--gold);
+    cursor:pointer;
+}
+
+/* ================= FOOTER ================= */
+footer{
+    text-align:center;
+    padding:25px;
+    background:#000;
+    font-size:0.85rem;
+    opacity:0.8;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+    nav{display:none;}
+    .hero-content h1{font-size:2.4rem;}
+}
+</style>
+</head>
+
+<body>
+
+<header id="header">
+    <div class="logo">Astro-Clinic</div>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- FLOATING BUTTONS -->
+<div class="fab call-btn">
+    <a href="tel:+919999999999">📞</a>
+</div>
+<div class="fab whatsapp-btn">
+    <a href="https://wa.me/919999999999">💬</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <video autoplay muted loop>
+        <source src="astro.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content">
+        <div>
+            <h1>Astro-Clinic</h1>
+            <p>Ancient wisdom blended with precise astrology to help you align with the right time.</p>
+            <span>Vedic • KP • Jaimini • Nadi • Astro-Vastu</span>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<div class="section-title"><h2>About Astro-Clinic</h2></div>
+<div class="about-grid">
+    <div class="glass">
+        <p>
+            With over <strong>10 years of professional experience</strong>, Astro-Clinic offers
+            ethical, accurate, and practical astrological guidance.
+            We believe astrology is a tool for clarity, not fear.
+        </p>
+    </div>
+    <div class="glass">
+        <p>
+            <strong>Expertise:</strong><br>
+            Vedic Astrology • KP System • Jaimini • Nadi Astrology • Astro-Vastu
+        </p>
+    </div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+<div class="section-title"><h2>Our Services</h2></div>
+<div class="services">
+    <div class="service-card" onclick="openModal('Horoscope Analysis','In-depth birth chart analysis covering career, finance, health and life direction.')">
+        <img src="https://images.unsplash.com/photo-1532960401447-7dd05bef20b3">
+        <span>Horoscope Analysis</span>
+    </div>
+
+    <div class="service-card" onclick="openModal('Match Making','Accurate compatibility analysis for marriage and long-term relationships.')">
+        <img src="https://images.unsplash.com/photo-1529634891959-8d4cfc07c8e5">
+        <span>Match Making</span>
+    </div>
+
+    <div class="service-card" onclick="openModal('Astro-Vastu','Logical vastu corrections to harmonize home and workplace energies.')">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e">
+        <span>Astro-Vastu</span>
+    </div>
+
+    <div class="service-card" onclick="openModal('Education & Career','Astrological guidance for students, professionals and entrepreneurs.')">
+        <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353">
+        <span>Career Guidance</span>
+    </div>
+</div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <h3 id="modalTitle"></h3>
+        <p id="modalText"></p>
+        <button onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+<div class="section-title"><h2>Contact</h2></div>
+<div class="glass">
+    <p>
+        📍 Your City, Your State<br>
+        📞 +91-9999999999<br>
+        ✉️ astroclinic@email.com
+    </p>
+</div>
+</section>
+
+<footer>
+© 2026 Astro-Clinic | Align Your Destiny
+</footer>
+
+<script>
+window.addEventListener("scroll",()=>{
+    document.getElementById("header")
+    .classList.toggle("scrolled",window.scrollY>50);
+});
+
+function openModal(title,text){
+    document.getElementById('modalTitle').innerText=title;
+    document.getElementById('modalText').innerText=text;
+    document.getElementById('modal').style.display='flex';
+}
+function closeModal(){
+    document.getElementById('modal').style.display='none';
+}
+</script>
+
+</body>
+</html>
