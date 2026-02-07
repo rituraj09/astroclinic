@@ -641,3 +641,26 @@ enhancedStyles.textContent = `
     .element-4 { font-size: 42px; animation-delay: 3s; }
 `;
 document.head.appendChild(enhancedStyles);
+
+
+
+// Add this to your main.js file
+document.addEventListener('DOMContentLoaded', function() {
+    const heroVideo = document.getElementById('hero-video');
+    
+    if (heroVideo) {
+        // Set playback rate to 0.5x (half speed)
+        heroVideo.playbackRate = 0.5;
+        
+        // Optional: Also try to play the video
+        heroVideo.play().catch(error => {
+            console.log("Video autoplay prevented:", error);
+            // Play on user interaction
+            document.addEventListener('click', function playVideo() {
+                heroVideo.play();
+                heroVideo.playbackRate = 0.5;
+                document.removeEventListener('click', playVideo);
+            });
+        });
+    }
+});

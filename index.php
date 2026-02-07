@@ -51,7 +51,7 @@
         <div class="hero-content">
             <h4 class="hero-subtitle">Ancient Wisdom. Precise Astrology. Practical Guidance.</h4>
             <h1 class="hero-title">Astro-Clinic</h1>
-            <h2 class="hero-tagline">Align Your Destiny</h2>
+            <h3 class="hero-tagline">Align Your Destiny</h3>
             <p class="hero-description">With over 10 years of professional experience, we offer accurate, ethical, and result-oriented astrological guidance tailored to your unique birth chart.</p>
             <a href="#contact" class="btn-hero">Book a Consultation</a>
         </div>
