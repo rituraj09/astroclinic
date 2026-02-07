@@ -336,3 +336,308 @@ window.addEventListener('resize', function() {
         });
     });
 });
+
+
+// Enhanced Particles.js with bigger, clearer particles
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('particles-js')) {
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 60, // Slightly fewer but bigger particles
+                    density: {
+                        enable: true,
+                        value_area: 600
+                    }
+                },
+                color: {
+                    value: ["#d3bb00", "#cac600", "#bad010", "#cdd021", "#ffffff"]
+                },
+                shape: {
+                    type: ["circle", "star", "triangle"],
+                    stroke: {
+                        width: 0,
+                        color: "#000000"
+                    },
+                    polygon: {
+                        nb_sides: 5
+                    },
+                    image: {
+                        src: "",
+                        width: 100,
+                        height: 100
+                    }
+                },
+                opacity: {
+                    value: 0.8, // Increased opacity
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.4,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 5, // Increased from 3 to 5
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 3,
+                        size_min: 2,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 120,
+                    color: "#b8d400",
+                    opacity: 0.6, // Increased opacity
+                    width: 1.5, // Thicker lines
+                    triangles: {
+                        enable: true,
+                        color: "#f1d535",
+                        opacity: 0.3
+                    }
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: true,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "grab"
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push"
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 150,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    bubble: {
+                        distance: 400,
+                        size: 10,
+                        duration: 2,
+                        opacity: 0.8,
+                        speed: 3
+                    },
+                    repulse: {
+                        distance: 100,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 6
+                    },
+                    remove: {
+                        particles_nb: 2
+                    }
+                }
+            },
+            retina_detect: true
+        });
+    }
+    
+    // Create bigger constellation elements
+    createEnhancedConstellations();
+});
+
+// Enhanced constellation elements
+function createEnhancedConstellations() {
+    const container = document.querySelector('.hero');
+    if (!container) return;
+    
+    // Remove existing constellation elements
+    const existing = container.querySelectorAll('.constellation-element, .constellation-line');
+    existing.forEach(el => el.remove());
+    
+    // Create bigger star elements
+    for (let i = 0; i < 12; i++) {
+        const star = document.createElement('div');
+        star.className = 'constellation-element star';
+        
+        const size = 4 + Math.random() * 6; // Bigger stars: 4-10px
+        const x = Math.random() * 95;
+        const y = Math.random() * 95;
+        const opacity = 0.6 + Math.random() * 0.4;
+        
+        star.style.cssText = `
+            position: fixed;
+            left: ${x}%;
+            top: ${y}%;
+            width: ${size}px;
+            height: ${size}px;
+            background: radial-gradient(circle, 
+                rgba(255,255,255,0.9) 0%, 
+                rgba(195, 172, 0, 0.7) 70%, 
+                transparent 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 ${size * 2}px rgba(157, 80, 187, 0.8);
+            z-index: -1;
+            pointer-events: none;
+            animation: starPulse ${2 + Math.random() * 3}s infinite alternate;
+            animation-delay: ${Math.random() * 2}s;
+        `;
+        
+        container.appendChild(star);
+    }
+    
+    // Create bigger special stars
+    for (let i = 0; i < 4; i++) {
+        const specialStar = document.createElement('div');
+        specialStar.className = 'constellation-element special-star';
+        
+        const x = 20 + Math.random() * 60;
+        const y = 20 + Math.random() * 60;
+        
+        specialStar.style.cssText = `
+            position: fixed;
+            left: ${x}%;
+            top: ${y}%;
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle, 
+                #ffffff 0%, 
+                #cfd200 30%, 
+                #d7d400 70%, 
+                transparent 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 25px rgb(223, 233, 85);
+            z-index: -1;
+            pointer-events: none;
+            animation: specialStarGlow ${3 + Math.random() * 2}s infinite alternate;
+            animation-delay: ${Math.random() * 1.5}s;
+        `;
+        
+        container.appendChild(specialStar);
+    }
+    
+    // Create thicker constellation lines
+    for (let i = 0; i < 8; i++) {
+        const line = document.createElement('div');
+        line.className = 'constellation-line';
+        
+        const x1 = Math.random() * 100;
+        const y1 = Math.random() * 100;
+        const x2 = x1 + (Math.random() * 30 - 15);
+        const y2 = y1 + (Math.random() * 30 - 15);
+        
+        const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+        const angle = Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI);
+        
+        line.style.cssText = `
+            position: fixed;
+            left: ${Math.min(x1, x2)}%;
+            top: ${Math.min(y1, y2)}%;
+            width: ${length}vw;
+            height: 2px; /* Thicker lines */
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(210, 178, 0, 0.6) 20%, 
+                rgba(228, 198, 0, 0.9) 50%, 
+                rgba(210, 217, 7, 0.6) 80%, 
+                transparent 100%);
+            transform: rotate(${angle}deg);
+            transform-origin: 0 0;
+            z-index: -1;
+            pointer-events: none;
+            animation: linePulse ${4 + Math.random() * 4}s infinite alternate;
+            filter: blur(0.5px);
+        `;
+        
+        container.appendChild(line);
+    }
+}
+
+// Add enhanced CSS animations
+const enhancedStyles = document.createElement('style');
+enhancedStyles.textContent = `
+    @keyframes starPulse {
+        0% {
+            transform: scale(1);
+            opacity: 0.5;
+            box-shadow: 0 0 15px rgba(242, 226, 0, 0.5);
+        }
+        100% {
+            transform: scale(1.3);
+            opacity: 1;
+            box-shadow: 0 0 25px rgb(217, 175, 7);
+        }
+    }
+    
+    @keyframes specialStarGlow {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 0 20px rgba(201, 195, 3, 0.7);
+        }
+        100% {
+            transform: scale(1.5);
+            box-shadow: 0 0 40px rgb(217, 207, 9),
+                        0 0 60px rgba(208, 192, 10, 0.5);
+        }
+    }
+    
+    @keyframes linePulse {
+        0% {
+            opacity: 0.3;
+            transform: rotate(var(--angle)) scaleX(0.8);
+        }
+        100% {
+            opacity: 0.7;
+            transform: rotate(var(--angle)) scaleX(1.2);
+        }
+    }
+    
+    /* Enhanced floating elements */
+    .floating-element {
+        position: absolute;
+        color: rgba(215, 204, 0, 0.8);
+        font-size: 32px; /* Bigger font size */
+        z-index: 0;
+        text-shadow: 0 0 15px rgba(202, 168, 14, 0.7);
+        animation: floatEnhanced 8s ease-in-out infinite;
+        filter: drop-shadow(0 0 8px rgba(218, 169, 10, 0.5));
+    }
+    
+    @keyframes floatEnhanced {
+        0%, 100% {
+            transform: translateY(0) rotate(0deg) scale(1);
+            opacity: 0.7;
+        }
+        33% {
+            transform: translateY(-30px) rotate(120deg) scale(1.2);
+            opacity: 0.9;
+        }
+        66% {
+            transform: translateY(15px) rotate(240deg) scale(1.1);
+            opacity: 0.8;
+        }
+    }
+    
+    /* Bigger specific floating elements */
+    .element-1 { font-size: 40px; animation-delay: 0s; }
+    .element-2 { font-size: 36px; animation-delay: 1s; }
+    .element-3 { font-size: 38px; animation-delay: 2s; }
+    .element-4 { font-size: 42px; animation-delay: 3s; }
+`;
+document.head.appendChild(enhancedStyles);

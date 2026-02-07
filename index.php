@@ -32,15 +32,22 @@
         </div>
     </header>
 
-    <!-- Hero Video Section -->
-    <section id="home" class="hero">
-        <div class="video-container">
-            <video autoplay muted loop playsinline id="hero-video">
-                <source src="assets/video/hero.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="video-overlay"></div>
-        </div>
+   <!-- Replace the video section with this -->
+   <section id="home" class="hero">
+         <div class="video-background">
+        <video autoplay muted loop playsinline id="hero-video">
+            <source src="assets/video/hero-bg.mp4" type="video/mp4">
+            <!-- Fallback to image if video doesn't load -->
+            <div class="video-fallback"></div>
+        </video>
+    </div>
+        <!-- Particle.js Canvas -->
+        <div id="particles-js"></div>
+        
+        <!-- Dark Overlay -->
+        <div class="hero-overlay"></div>
+        
+        <!-- Content -->
         <div class="hero-content">
             <h4 class="hero-subtitle">Ancient Wisdom. Precise Astrology. Practical Guidance.</h4>
             <h1 class="hero-title">Astro-Clinic</h1>
@@ -48,7 +55,7 @@
             <p class="hero-description">With over 10 years of professional experience, we offer accurate, ethical, and result-oriented astrological guidance tailored to your unique birth chart.</p>
             <a href="#contact" class="btn-hero">Book a Consultation</a>
         </div>
-     
+       
     </section>
 
     <!-- About Section -->
@@ -356,5 +363,6 @@
     </div>
 
     <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </body>
 </html>
