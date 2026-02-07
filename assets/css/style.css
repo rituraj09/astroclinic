@@ -50,7 +50,7 @@ section {
     transform: translateX(-50%);
     width: 80px;
     height: 3px;
-    background: linear-gradient(to right, #9d50bb, #6e48aa);
+    background: linear-gradient(to right, #f2b800, #6e48aa);
 }
 
 .section-subtitle {
@@ -60,22 +60,25 @@ section {
     margin: 0 auto;
 }
 
-/* Header Styles */
+/* Header Styles - Updated with height and image animation */
 .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 20px 0;
-    transition: all 0.3s ease;
+    padding: 30px 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     background-color: rgba(10, 10, 22, 0.9);
     backdrop-filter: blur(10px);
+    box-shadow: 0 0 0 rgba(157, 80, 187, 0);
 }
 
 .header.scrolled {
-    padding: 15px 0;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 12px 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    background-color: rgba(10, 10, 22, 0.98);
+    backdrop-filter: blur(15px);
 }
 
 .header .container {
@@ -84,11 +87,64 @@ section {
     align-items: center;
 }
 
-.logo img {
-    height: 50px;
-    transition: all 0.3s ease;
+/* Logo container for better control */
+.logo {
+    display: flex;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Original logo size - large */
+.logo img {
+    height: 80px;
+    width: auto;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: left center;
+}
+
+/* Smaller logo when scrolled */
+.header.scrolled .logo img {
+    height: 50px;
+}
+
+/* Optional: Add logo text that also scales */
+.logo-text {
+    margin-left: 15px;
+    opacity: 1;
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.logo-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #fff;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.logo-text p {
+    font-size: 0.8rem;
+    color: #b19cd9;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Hide text on smaller screens or when scrolled */
+@media (max-width: 992px) {
+    .logo-text {
+        display: none;
+    }
+}
+
+.header.scrolled .logo-text {
+    opacity: 0;
+    width: 0;
+    margin-left: 0;
+}
+
+
+/* Nav animation */
 .nav ul {
     display: flex;
     list-style: none;
@@ -96,42 +152,38 @@ section {
 
 .nav li {
     margin-left: 30px;
+    transition: all 0.3s ease;
 }
 
 .nav a {
     color: #fff;
     text-decoration: none;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1.05rem;
     transition: all 0.3s ease;
     position: relative;
+    padding: 8px 0;
+    display: block;
+}
+
+.header.scrolled .nav a {
     padding: 5px 0;
+    font-size: 0.95rem;
 }
 
-.nav a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(to right, #9d50bb, #6e48aa);
-    transition: width 0.3s ease;
-}
 
-.nav a:hover {
-    color: #b19cd9;
-}
-
-.nav a:hover::after {
-    width: 100%;
-}
-
+/* Mobile menu button also scales */
 .mobile-menu-btn {
     display: none;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: #fff;
     cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 5px;
+}
+
+.header.scrolled .mobile-menu-btn {
+    font-size: 1.3rem;
 }
 
 /* Hero Section */
@@ -187,6 +239,52 @@ section {
     margin-bottom: 15px;
     font-weight: 500;
     letter-spacing: 1px;
+    display: block; /* Ensure it's visible by default */
+}
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+    .hero-subtitle {
+        display: none;
+    }
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #b19cd9;
+    margin-bottom: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* Tablet and mobile adjustments */
+@media (max-width: 992px) {
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        letter-spacing: 0.5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+    }
+}
+
+/* Optional: Hide only on very small screens */
+@media (max-width: 400px) {
+    .hero-subtitle {
+        display: none;
+    }
 }
 
 .hero-title {
@@ -200,10 +298,10 @@ section {
 
 .hero-tagline {
     font-size: 2.2rem;
-    color: #9d50bb;
+    color: #f2b800;
     margin-bottom: 25px;
     font-weight: 600;
-    background: linear-gradient(to right, #9d50bb, #6e48aa);
+    background: linear-gradient(to right, #f2b800, #a37d00);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -218,7 +316,7 @@ section {
 
 .btn-hero {
     display: inline-block;
-    background: linear-gradient(to right, #9d50bb, #6e48aa);
+    background: linear-gradient(to right, #f2b800, #7d6000);
     color: white;
     padding: 15px 35px;
     border-radius: 50px;
@@ -248,7 +346,7 @@ section {
     display: block;
     width: 25px;
     height: 40px;
-    border: 2px solid #9d50bb;
+    border: 2px solid #f2b800;
     border-radius: 15px;
     position: relative;
 }
@@ -261,7 +359,7 @@ section {
     transform: translateX(-50%);
     width: 4px;
     height: 10px;
-    background-color: #9d50bb;
+    background-color: #f2b800;
     border-radius: 2px;
     animation: scrollDown 2s infinite;
 }
@@ -302,7 +400,7 @@ section {
 }
 
 .feature i {
-    color: #9d50bb;
+    color: #f2b800;
     font-size: 1.3rem;
     margin-right: 10px;
 }
@@ -356,7 +454,7 @@ section {
 
 .expertise-icon {
     font-size: 2.5rem;
-    color: #9d50bb;
+    color: #f2b800;
     margin-bottom: 20px;
 }
 
@@ -461,7 +559,7 @@ section {
 }
 
 .service-hover i {
-    color: #9d50bb;
+    color: #f2b800;
     font-size: 1.2rem;
 }
 
@@ -509,7 +607,7 @@ section {
 
 .philosophy-point i {
     font-size: 1.8rem;
-    color: #9d50bb;
+    color: #f2b800;
     margin-right: 20px;
     flex-shrink: 0;
 }
@@ -555,7 +653,7 @@ section {
 
 .contact-detail i {
     font-size: 1.8rem;
-    color: #9d50bb;
+    color: #f2b800;
     margin-right: 20px;
     flex-shrink: 0;
 }
@@ -661,7 +759,7 @@ section {
 }
 
 .footer-links a:hover {
-    color: #9d50bb;
+    color: #f2b800;
 }
 
 .social-icons {
@@ -683,7 +781,7 @@ section {
 }
 
 .social-icons a:hover {
-    background: #9d50bb;
+    background: #f2b800;
     color: white;
     transform: translateY(-5px);
 }
@@ -729,7 +827,7 @@ section {
 }
 
 .message-button {
-    background: linear-gradient(to right, #9d50bb, #6e48aa);
+    background: linear-gradient(to right, #f2b800, #6e48aa);
 }
 
 .call-button:hover, .message-button:hover {
@@ -801,7 +899,7 @@ section {
 }
 
 .modal-close:hover {
-    color: #9d50bb;
+    color: #f2b800;
 }
 
 .modal-body {
@@ -955,5 +1053,203 @@ section {
     
     .expertise-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 20px 0;
+    }
+    
+    .header.scrolled {
+        padding: 10px 0;
+    }
+    
+    .logo img {
+        height: 50px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .header.scrolled .logo img {
+        height: 35px;
+    }
+    
+    /* Adjust nav position based on header height */
+    .nav {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(10, 10, 22, 0.98);
+        backdrop-filter: blur(15px);
+        padding: 20px;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .header.scrolled .nav {
+        top: 55px;
+    }
+    
+    /* Mobile menu button also reduces */
+    .mobile-menu-btn {
+        font-size: 1.4rem;
+        padding: 8px;
+    }
+    
+    .header.scrolled .mobile-menu-btn {
+        font-size: 1.2rem;
+        padding: 6px;
+    }
+    
+    /* Rest of mobile styles remain the same */
+    .nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .nav ul {
+        flex-direction: column;
+    }
+    
+    .nav li {
+        margin: 0 0 15px 0;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+    }
+    
+    .nav.active li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Stagger animation for nav items */
+    .nav.active li:nth-child(1) { transition-delay: 0.1s; }
+    .nav.active li:nth-child(2) { transition-delay: 0.2s; }
+    .nav.active li:nth-child(3) { transition-delay: 0.3s; }
+    .nav.active li:nth-child(4) { transition-delay: 0.4s; }
+    .nav.active li:nth-child(5) { transition-delay: 0.5s; }
+    .nav.active li:nth-child(6) { transition-delay: 0.6s; }
+    
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    
+    .hero-tagline {
+        font-size: 1.5rem;
+    }
+    
+    .hero-content {
+        padding: 0 20px;
+    }
+    
+    .section {
+        padding: 60px 0;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .fixed-buttons {
+        right: 15px;
+        bottom: 15px;
+    }
+    
+    .call-button, .message-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .header {
+        padding: 15px 0;
+    }
+    
+    .header.scrolled {
+        padding: 8px 0;
+    }
+    
+    .logo img {
+        height: 45px;
+    }
+    
+    .header.scrolled .logo img {
+        height: 30px;
+    }
+    
+    .header.scrolled .nav {
+        top: 50px;
+    }
+    
+    .mobile-menu-btn {
+        font-size: 1.3rem;
+    }
+    
+    .header.scrolled .mobile-menu-btn {
+        font-size: 1.1rem;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .expertise-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-content {
+        flex-direction: column;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 400px) {
+    .header {
+        padding: 12px 0;
+    }
+    
+    .header.scrolled {
+        padding: 6px 0;
+    }
+    
+    .logo img {
+        height: 40px;
+    }
+    
+    .header.scrolled .logo img {
+        height: 28px;
+    }
+    
+    .header.scrolled .nav {
+        top: 45px;
+    }
+    
+    .container {
+        padding: 0 15px;
     }
 }

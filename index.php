@@ -14,7 +14,7 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <img src="assets/images/logo.jpeg" alt="Astro-Clinic Logo">
+                <img src="assets/images/logo_large.jpeg" alt="Astro-Clinic Logo">
             </div>
             <nav class="nav">
                 <ul>
@@ -48,9 +48,7 @@
             <p class="hero-description">With over 10 years of professional experience, we offer accurate, ethical, and result-oriented astrological guidance tailored to your unique birth chart.</p>
             <a href="#contact" class="btn-hero">Book a Consultation</a>
         </div>
-        <div class="scroll-indicator">
-            <span></span>
-        </div>
+     
     </section>
 
     <!-- About Section -->
@@ -84,7 +82,7 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1533134486753-c833f0ed4866?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Astrology Chart">
+                    <img src="assets/images/vastu_philosophy.jpg" alt="Astrology Chart">
                 </div>
             </div>
         </div>
@@ -149,7 +147,7 @@
                 <!-- Service Card 1 -->
                 <div class="service-card" data-service="1">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Horoscope Analysis">
+                        <img src="assets/images/birth_chart.jpg" alt="Horoscope Analysis">
                     </div>
                     <div class="service-content">
                         <h3>Horoscope & Birth Chart Analysis</h3>
@@ -163,7 +161,7 @@
                 <!-- Service Card 2 -->
                 <div class="service-card" data-service="2">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Match Making">
+                        <img src="assets/images/match_making.jpg" alt="Match Making">
                     </div>
                     <div class="service-content">
                         <h3>Match Making & Marriage Compatibility</h3>
@@ -177,7 +175,7 @@
                 <!-- Service Card 3 -->
                 <div class="service-card" data-service="3">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1158&q=80" alt="Vastu Consultation">
+                        <img src="assets/images/vastu.jpg" alt="Vastu Consultation">
                     </div>
                     <div class="service-content">
                         <h3>Astro-Vastu Consultation</h3>
@@ -191,7 +189,7 @@
                 <!-- Service Card 4 -->
                 <div class="service-card" data-service="4">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=873&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Career Guidance">
+                        <img src="assets/images/career.jpg" alt="Career Guidance">
                     </div>
                     <div class="service-content">
                         <h3>Education & Career Guidance</h3>
@@ -214,7 +212,7 @@
             </div>
             <div class="philosophy-content">
                 <div class="philosophy-image">
-                    <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Philosophy">
+                    <img src="assets/images/vastu_body.jpg" alt="Philosophy">
                 </div>
                 <div class="philosophy-text">
                     <div class="philosophy-point">
@@ -306,7 +304,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="assets/images/logo.png" alt="Astro-Clinic Logo">
+                    <img src="assets/images/logo_large.jpeg" alt="Astro-Clinic Logo">
                     <p>Align Your Destiny with Ancient Wisdom</p>
                 </div>
                 <div class="footer-links">

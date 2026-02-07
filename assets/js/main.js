@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (mobileMenuBtn) {
         mobileMenuBtn.addEventListener('click', function() {
             nav.classList.toggle('active');
+            this.classList.toggle('active');
         });
     }
     
@@ -16,20 +17,136 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function() {
             if (nav.classList.contains('active')) {
                 nav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
             }
         });
     });
     
-    // Header scroll effect
-    const header = document.querySelector('.header');
+  // Header scroll effect with height and image animation - Mobile compatible
+const header = document.querySelector('.header');
+const logoImg = document.querySelector('.logo img');
+let lastScrollTop = 0;
+const scrollThreshold = 50;
+
+// Set initial logo sizes based on screen width
+function getLogoHeights() {
+    const screenWidth = window.innerWidth;
     
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
+    if (screenWidth <= 576) {
+        // Mobile phones
+        return { original: 45, small: 30 };
+    } else if (screenWidth <= 768) {
+        // Tablets
+        return { original: 50, small: 35 };
+    } else {
+        // Desktop
+        return { original: 80, small: 50 };
+    }
+}
+
+// Update logo heights on resize
+let logoHeights = getLogoHeights();
+
+window.addEventListener('resize', function() {
+    logoHeights = getLogoHeights();
+    
+    // Reset logo size based on current scroll state
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollTop > scrollThreshold) {
+        logoImg.style.height = `${logoHeights.small}px`;
+        header.classList.add('scrolled');
+    } else {
+        logoImg.style.height = `${logoHeights.original}px`;
+        header.classList.remove('scrolled');
+    }
+});
+
+window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Update logo heights in case of resize during scroll
+    logoHeights = getLogoHeights();
+    
+    if (scrollTop > scrollThreshold) {
+        header.classList.add('scrolled');
+        
+        // Smooth image scaling based on scroll position
+        const scrollProgress = Math.min((scrollTop - scrollThreshold) / 200, 1);
+        const currentLogoHeight = logoHeights.original - (scrollProgress * (logoHeights.original - logoHeights.small));
+        
+        // Apply smooth scaling to logo
+        logoImg.style.height = `${currentLogoHeight}px`;
+        
+        // Optional: Add opacity effect during transition
+        const logoOpacity = 1 - (scrollProgress * 0.2);
+        logoImg.style.opacity = logoOpacity;
+        
+        // Add subtle parallax effect
+        if (scrollTop > lastScrollTop && scrollTop > 300) {
+            // Scrolling down fast
+            header.style.transform = 'translateY(-3px)';
         } else {
-            header.classList.remove('scrolled');
+            // Scrolling up or slow scroll
+            header.style.transform = 'translateY(0)';
         }
-    });
+    } else {
+        header.classList.remove('scrolled');
+        
+        // Reset logo to original size
+        logoImg.style.height = `${logoHeights.original}px`;
+        logoImg.style.opacity = '1';
+        header.style.transform = 'translateY(0)';
+    }
+    
+    lastScrollTop = scrollTop;
+});
+
+// Initialize logo size on page load
+document.addEventListener('DOMContentLoaded', function() {
+    logoHeights = getLogoHeights();
+    logoImg.style.height = `${logoHeights.original}px`;
+});
+
+// Reset logo on window resize
+window.addEventListener('resize', function() {
+    // Reset to ensure proper scaling
+    if (!header.classList.contains('scrolled')) {
+        logoImg.style.height = `${logoOriginalHeight}px`;
+    } else {
+        logoImg.style.height = `${logoSmallHeight}px`;
+    }
+});
+    // Update active nav link based on scroll position
+    function updateActiveNavLink() {
+        const sections = document.querySelectorAll('section');
+        const scrollPosition = window.scrollY + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                // Remove active class from all links
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Add active class to corresponding link
+                const activeLink = document.querySelector(`.nav a[href="#${sectionId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    }
+    
+    // Call on scroll
+    window.addEventListener('scroll', updateActiveNavLink);
+    
+    // Call on page load
+    document.addEventListener('DOMContentLoaded', updateActiveNavLink);
     
     // Service Cards Modal
     const serviceCards = document.querySelectorAll('.service-card');
@@ -133,22 +250,58 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Video play/pause control on mobile for better performance
+    // VIDEO PLAY SOLUTION - Always playing, never pausing on scroll
     const heroVideo = document.getElementById('hero-video');
     
-    // Pause video when not in viewport for performance
-    const videoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                heroVideo.play().catch(e => console.log("Autoplay prevented:", e));
-            } else {
-                heroVideo.pause();
+    if (heroVideo) {
+        // Strategy 1: Try to play immediately
+        const playPromise = heroVideo.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                console.log("Initial autoplay blocked:", error);
+                
+                // Strategy 2: Play on first user interaction
+                const playVideoOnInteraction = () => {
+                    heroVideo.play();
+                    
+                    // Remove listeners after first successful play
+                    ['click', 'touchstart', 'scroll', 'keydown'].forEach(eventType => {
+                        document.removeEventListener(eventType, playVideoOnInteraction);
+                    });
+                };
+                
+                // Add multiple interaction listeners
+                ['click', 'touchstart', 'scroll', 'keydown'].forEach(eventType => {
+                    document.addEventListener(eventType, playVideoOnInteraction, { once: true });
+                });
+            });
+        }
+        
+        // Strategy 3: Monitor and restart if paused (except when page is hidden)
+        let isPageVisible = true;
+        
+        document.addEventListener('visibilitychange', () => {
+            isPageVisible = !document.hidden;
+            
+            if (isPageVisible && heroVideo.paused) {
+                heroVideo.play().catch(e => console.log("Visibility resume failed:", e));
             }
         });
-    }, { threshold: 0.5 });
-    
-    if (heroVideo) {
-        videoObserver.observe(heroVideo);
+        
+        // Check every second if video should be playing
+        const videoMonitor = setInterval(() => {
+            if (isPageVisible && heroVideo.paused) {
+                heroVideo.play().catch(e => {
+                    console.log("Resume attempt failed:", e);
+                });
+            }
+        }, 1000);
+        
+        // Clean up on page unload
+        window.addEventListener('beforeunload', () => {
+            clearInterval(videoMonitor);
+        });
     }
     
     // Add animation to elements on scroll
@@ -169,42 +322,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
+                e.preventDefault();
                 window.scrollTo({
                     top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
             }
         });
-    });
-    
-    // Lazy load images for better performance
-    const lazyImages = document.querySelectorAll('img');
-    
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.getAttribute('data-src') || img.src;
-                img.classList.add('loaded');
-                imageObserver.unobserve(img);
-            }
-        });
-    }, { rootMargin: '50px 0px' });
-    
-    lazyImages.forEach(img => {
-        // If image is already in viewport, load it immediately
-        if (img.getBoundingClientRect().top < window.innerHeight) {
-            img.src = img.getAttribute('data-src') || img.src;
-            img.classList.add('loaded');
-        } else {
-            imageObserver.observe(img);
-        }
     });
 });
