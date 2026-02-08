@@ -331,7 +331,7 @@ section {
 }
 
 .hero-tagline {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: #f2b800;
     margin-bottom: 25px;
     font-weight: 600;
@@ -522,7 +522,7 @@ section {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 30px;
 }
 
@@ -704,15 +704,31 @@ section {
     margin-bottom: 5px;
 }
 
+/* Contact Map Section - Fixed Height */
 .contact-map {
     flex: 1;
+    min-height: 400px; /* Minimum height */
 }
 
 .map-placeholder {
     height: 100%;
+    min-height: 400px; /* Match parent */
     border-radius: 10px;
     overflow: hidden;
     position: relative;
+}
+
+.map-image {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+}
+
+.map-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    display: block;
 }
 
 .map-overlay {
@@ -762,7 +778,7 @@ section {
 }
 
 .footer-logo img {
-    height: 50px;
+    height: 150px;
     margin-bottom: 15px;
 }
 
@@ -990,7 +1006,7 @@ section {
     }
     
     .hero-tagline {
-        font-size: 1.8rem;
+        font-size: 1.2rem;
     }
     
     .section-title {
@@ -1036,7 +1052,7 @@ section {
     }
     
     .hero-tagline {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
     
     .hero-content {
@@ -1175,7 +1191,7 @@ section {
     }
     
     .hero-tagline {
-        font-size: 1.5rem;
+        font-size: .8rem;
     }
     
     .hero-content {
@@ -1432,4 +1448,44 @@ section {
     z-index: -1;
     opacity: 0.6;
     pointer-events: none;
+}
+
+
+ 
+.footer-social h2{
+    color: #fff;
+    font-size: 1.2rem; 
+}
+.counter-number {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff; 
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+ 
+
+/* Responsive Design for Counter */
+@media (min-width: 768px) {
+    .counter-section {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+    
+    .counter-number {
+        font-size: 1rem;
+    }
+     
+}
+
+@media (max-width: 480px) {
+    .counter-section {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .counter-number {
+        font-size: 1rem;
+    } 
 }

@@ -210,7 +210,64 @@ window.addEventListener('resize', function() {
                 <p>Perfect for students, professionals, and entrepreneurs seeking clarity on educational and career paths.</p>
                 <p>We also offer consultations for: Career & Business Astrology, Finance & Investment Timing, Health Astrology (Preventive Focus), Transit & Dasha Predictions, and Yearly Forecasts.</p>
             `
-        }
+        },
+         5: {
+        title: "Gemstone & Rudraksha Recommendation",
+        content: `
+            <p><strong>Scientifically recommended gemstones and Rudraksha based on your birth chart</strong></p>
+            <p>We analyze your planetary positions and recommend specific gemstones to:</p>
+            <ul>
+                <li><strong>Balance planetary energies:</strong> Strengthen weak planets and harmonize malefic influences</li>
+                <li><strong>Enhance specific life areas:</strong> Target improvements in career, health, relationships, or finances</li>
+                <li><strong>Authentic gemstone verification:</strong> Guidance on genuine vs. synthetic stones, proper weight, and quality</li>
+                <li><strong>Customized recommendations:</strong> Based on your ascendant, moon sign, and specific planetary positions</li>
+                <li><strong>Proper wearing instructions:</strong> Right metal, finger, day, time, and mantras for activation</li>
+                <li><strong>Rudraksha selection:</strong> Recommend specific Mukhi (faced) Rudraksha for spiritual and material benefits</li>
+            </ul>
+            
+            <p><strong>Common Gemstone Recommendations:</strong></p>
+            <ul>
+                <li><strong>Ruby (Manikya):</strong> For Sun - leadership, confidence, government success</li>
+                <li><strong>Pearl (Moti):</strong> For Moon - emotional balance, mental peace, maternal happiness</li>
+                <li><strong>Red Coral (Moonga):</strong> For Mars - courage, property, siblings harmony</li>
+                <li><strong>Emerald (Panna):</strong> For Mercury - intelligence, communication, business success</li>
+                <li><strong>Yellow Sapphire (Pukhraj):</strong> For Jupiter - wisdom, prosperity, children happiness</li>
+                <li><strong>Diamond (Heera):</strong> For Venus - luxury, relationships, artistic talents</li>
+                <li><strong>Blue Sapphire (Neelam):</strong> For Saturn - discipline, career stability, karmic balance</li>
+                <li><strong>Hessonite (Gomed):</strong> For Rahu - technology success, foreign travel, sudden gains</li>
+                <li><strong>Cat's Eye (Lehsunia):</strong> For Ketu - spirituality, intuition, protection</li>
+            </ul>
+            
+            <p><strong>Our Approach:</strong></p>
+            <ul>
+                <li>We recommend gemstones only after thorough chart analysis</li>
+                <li>Provide guidance on where to purchase authentic stones</li>
+                <li>Follow-up consultations to monitor effects and adjustments</li>
+                <li>Only genuine recommendations</li>
+                <li>Combination stones for multiple planetary corrections</li>
+            </ul>
+            
+            <p><strong>Note:</strong> Gemstones are powerful tools that should be chosen carefully. Wrong gemstones can cause harm rather than benefit. We ensure safe, accurate recommendations based on your unique astrological configuration.</p>
+        `
+        },
+        6: {
+            title: "Medical Astrology & Health Analysis",
+            content: `
+                <p><strong>Preventive health analysis and timing of health issues through astrology</strong></p>
+                
+                <p>Medical astrology analyzes the connection between planetary positions and your health patterns to:</p>
+                
+                <ul>
+                    <li><strong>Identify health tendencies:</strong> Understand your constitutional strengths and weaknesses based on planetary influences</li>
+                    <li><strong>Preventive guidance:</strong> Early warnings about potential health issues before they manifest</li>
+                    <li><strong>Timing of health events:</strong> Predict favorable and challenging health periods through dasha and transit analysis</li>
+                    <li><strong>Chronic condition management:</strong> Astrological insights for managing ongoing health conditions</li>
+                    <li><strong>Remedies for health issues:</strong> Simple astrological remedies to support healing and recovery</li>
+                    <li><strong>Mental health analysis:</strong> Understanding emotional and mental health patterns through moon and mercury positions</li>
+                    <li><strong>Diet and lifestyle recommendations:</strong> Personalized suggestions based on your planetary constitution</li>
+                </ul>
+                `
+    }
     };
     
     // Open modal when service card is clicked
@@ -337,6 +394,7 @@ window.addEventListener('resize', function() {
     });
 });
 
+ 
 
 // Enhanced Particles.js with bigger, clearer particles
 document.addEventListener('DOMContentLoaded', function() {
@@ -662,5 +720,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.removeEventListener('click', playVideo);
             });
         });
+    }
+});
+
+
+// Add to your main.js
+document.addEventListener('DOMContentLoaded', function() {
+    const heroVideo = document.getElementById('hero-video');
+    
+    if (heroVideo) {
+        // Set slower playback for better feel (optional)
+        heroVideo.playbackRate = 0.5;
+        
+        // Handle video loading with fallback
+        heroVideo.addEventListener('error', function() {
+            console.log('Video failed to load, using fallback');
+            this.style.display = 'none';
+            const fallback = document.querySelector('.video-fallback');
+            if (fallback) fallback.style.display = 'block';
+        });
+        
+        // Lazy load for mobile
+        if (window.innerWidth <= 768) {
+            heroVideo.style.display = 'none';
+        }
+        
+        // Try to play with error handling
+        const playPromise = heroVideo.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                console.log('Video autoplay prevented:', error);
+            });
+        }
     }
 });

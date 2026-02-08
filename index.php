@@ -1,12 +1,183 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astro-Clinic - Align Your Destiny</title>
+ 
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico"> 
+   <title>Astro-Clinic | Best Astrologer in Assam | Sivasagar, Jorhat, Dibrugarh</title>
+    <meta name="description" content="Professional Vedic astrology consultations in Assam. Get accurate birth chart analysis, marriage compatibility, gemstone recommendations in Sivasagar, Jorhat, Dibrugarh, Tinsukia, Golaghat, Lakhimpur, Sonitpur, Dhemaji, Guwahati, Nagao, Karbi Anglong. 10+ years experience.">
+    <meta name="keywords" content="astrologer in Assam, best astrologer Sivasagar, Vedic astrology Jorhat, KP astrology Dibrugarh, marriage compatibility Tinsukia, gemstone recommendation Golaghat, birth chart analysis Lakhimpur, career astrology Sonitpur, vastu consultant Dhemaji, online astrology Guwahati, Nadi astrology Nagao, Astro-Vastu Karbi Anglong">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.astro-clinic.com/">
+    
+    <!-- Open Graph Meta Tags (for Facebook/WhatsApp sharing) -->
+    <meta property="og:title" content="Astro-Clinic | Professional Astrology Services in Assam">
+    <meta property="og:description" content="Ancient Wisdom. Precise Astrology. Practical Guidance for people of Assam. Get accurate astrological solutions for career, marriage, health and finance.">
+    <meta property="og:image" content="https://www.astro-clinic.com/assets/images/og-image.jpg">
+    <meta property="og:url" content="https://www.astro-clinic.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:site_name" content="Astro-Clinic">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Astro-Clinic | Assam's Trusted Astrology Service">
+    <meta name="twitter:description" content="Vedic astrology consultations across Assam - Sivasagar, Jorhat, Dibrugarh, Tinsukia, Golaghat, Lakhimpur, Sonitpur, Dhemaji, Guwahati, Nagao, Karbi Anglong">
+    <meta name="twitter:image" content="https://www.astro-clinic.com/assets/images/twitter-image.jpg">
+    
+    <!-- Local Business Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Astro-Clinic",
+        "description": "Professional Vedic Astrology and Consultation Services in Assam",
+        "url": "https://www.astro-clinic.com/",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Sivasagar",
+            "addressRegion": "Assam",
+            "addressCountry": "IN"
+        },
+        "areaServed": [
+            {"@type": "City", "name": "Sivasagar"},
+            {"@type": "City", "name": "Jorhat"},
+            {"@type": "City", "name": "Dibrugarh"},
+            {"@type": "City", "name": "Tinsukia"},
+            {"@type": "City", "name": "Golaghat"},
+            {"@type": "City", "name": "Lakhimpur"},
+            {"@type": "City", "name": "Sonitpur"},
+            {"@type": "City", "name": "Dhemaji"},
+            {"@type": "City", "name": "Guwahati"},
+            {"@type": "City", "name": "Nagao"},
+            {"@type": "City", "name": "Karbi Anglong"},
+            {"@type": "State", "name": "Assam"}
+        ],
+        "serviceType": ["Vedic Astrology", "KP Astrology", "Marriage Compatibility", "Gemstone Consultation", "Career Guidance", "Vastu Consultation"],
+        "openingHours": "Mo-Su 09:00-20:00",
+        "telephone": "+917002523648",
+        "email": "consultation@astro-clinic.com"
+    }
+    </script>
+    
+    <!-- Service Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Vedic Astrology Consultation",
+        "provider": {
+            "@type": "Organization",
+            "name": "Astro-Clinic",
+            "description": "Professional astrology service with 10+ years experience"
+        },
+        "areaServed": {
+            "@type": "State",
+            "name": "Assam"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Astrology Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Birth Chart Analysis",
+                        "description": "Detailed analysis of natal chart for career, health, relationships"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Marriage Compatibility",
+                        "description": "Ashtakoota Milan and KP-based marriage timing analysis"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Gemstone Recommendation",
+                        "description": "Scientific gemstone recommendations based on birth chart"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What astrology systems do you use?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We practice multiple advanced systems: Vedic Astrology (Parāśari System), KP System, Jaimini Astrology, Nadi Astrology, and Astro-Vastu for cross-verification and accuracy."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you provide services in Assamese language?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we provide consultations in Assamese, English, and Hindi for clients across Assam including Sivasagar, Jorhat, Dibrugarh, and other districts."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How can I book a consultation?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can book via WhatsApp (+917002523648), phone call, or through our website contact form. Online consultations available for all districts of Assam."
+                }
+            }
+        ]
+    }
+    </script>
+    
+    <!-- Geo Location Meta -->
+    <meta name="geo.region" content="IN-AS">
+    <meta name="geo.placename" content="Sivasagar">
+    <meta name="geo.position" content="26.9833;94.6333">
+    <meta name="ICBM" content="26.9833, 94.6333">
+    
+    <!-- Language Meta -->
+    <meta http-equiv="content-language" content="en, as">
+    <link rel="alternate" hreflang="en" href="https://www.astro-clinic.com/">
+    <link rel="alternate" hreflang="as" href="https://www.astro-clinic.com/as/">
+    
+    <!-- Verification Meta (for Google Search Console) -->
+    <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE">
+    
+    <!-- Bing Verification -->
+    <meta name="msvalidate.01" content="YOUR_BING_VERIFICATION_CODE">
+    
+    <!-- Yandex Verification -->
+    <meta name="yandex-verification" content="YOUR_YANDEX_VERIFICATION_CODE">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    
+    <!-- Fonts and Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="assets/css/style.css" as="style">
+    <link rel="preload" href="assets/js/main.js" as="script">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -14,7 +185,7 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <img src="assets/images/logo_large.jpeg" alt="Astro-Clinic Logo">
+                <img src="assets/images/logo.png" alt="Astro-Clinic Logo">
             </div>
             <nav class="nav">
                 <ul>
@@ -34,13 +205,14 @@
 
    <!-- Replace the video section with this -->
    <section id="home" class="hero">
-         <div class="video-background">
-        <video autoplay muted loop playsinline id="hero-video">
-            <source src="assets/video/hero-bg.mp4" type="video/mp4">
-            <!-- Fallback to image if video doesn't load -->
-            <div class="video-fallback"></div>
-        </video>
-    </div>
+        <div class="video-background">
+              <video autoplay muted loop playsinline preload="metadata" 
+               poster="assets/images/bg-hero.jpg" id="hero-video">
+                <source src="assets/video/hero-bg.webm" type="video/webm">
+                <!-- Fallback to image if video doesn't load -->
+                <div class="video-fallback"></div>
+            </video>
+        </div>
         <!-- Particle.js Canvas -->
         <div id="particles-js"></div>
         
@@ -53,7 +225,7 @@
             <h1 class="hero-title">Astro-Clinic</h1>
             <h3 class="hero-tagline">Align Your Destiny</h3>
             <p class="hero-description">With over 10 years of professional experience, we offer accurate, ethical, and result-oriented astrological guidance tailored to your unique birth chart.</p>
-            <a href="#contact" class="btn-hero">Book a Consultation</a>
+            <a href="https://wa.me/+917002523648" class="btn-hero">Book a Consultation</a>
         </div>
        
     </section>
@@ -107,7 +279,7 @@
                     <div class="expertise-icon">
                         <i class="fas fa-star-and-crescent"></i>
                     </div>
-                    <h3>Vedic Astrology</h3>
+                    <h3>Vedic Jyotish</h3>
                     <p>Parāśari System for comprehensive life analysis</p>
                 </div>
                 <div class="expertise-card">
@@ -192,7 +364,19 @@
                         </div>
                     </div>
                 </div>
-                
+                 <!-- Add this as the 6 service card -->
+                    <div class="service-card" data-service="6">
+                        <div class="service-image">
+                            <img src="assets/images/meidcal.jpg" alt="Medical Astrology">
+                        </div>
+                        <div class="service-content">
+                            <h3>Medical Astrology & Health Analysis</h3>
+                            <div class="service-hover">
+                                <p>Click for details</p>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
                 <!-- Service Card 4 -->
                 <div class="service-card" data-service="4">
                     <div class="service-image">
@@ -206,6 +390,22 @@
                         </div>
                     </div>
                 </div>
+
+                 <!-- Service Card 5 --> 
+                <div class="service-card" data-service="5">
+                    <div class="service-image">
+                                <img src="assets/images/gemstone.jpeg" alt="Gemstone Recommendation">
+                    </div>
+                    <div class="service-content">
+                        <h3>Gemstone Recommendation</h3>
+                        <div class="service-hover">
+                            <p>Click for details</p>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+
+               
             </div>
         </div>
     </section>
@@ -265,11 +465,11 @@
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-detail">
-                        <i class="fas fa-envelope"></i>
+                        <i class="fas fa-phone"></i>
                         <div>
-                            <h3>Email</h3>
-                            <p>consultation@astro-clinic.com</p>
-                            <p>📩 Personal consultations available by appointment</p>
+                            <h3>Phone</h3>
+                            <p>📞 +91 7002523648</p>
+                            <p> Personal consultations available by appointment</p>
                         </div>
                     </div>
                     <div class="contact-detail">
@@ -277,16 +477,16 @@
                         <div>
                             <h3>Online Consultations</h3>
                             <p>🌐 Online consultations supported worldwide</p>
-                            <p>Available via Zoom, WhatsApp, or Skype</p>
+                            <p>Available via WhatsApp</p>
                         </div>
                     </div>
                     <div class="contact-detail">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <h3>Address</h3>
-                            <p>Astro-Clinic Center</p>
-                            <p>123 Wisdom Street, Cosmic City</p>
-                            <p>Galaxy 10001</p>
+                            <p>Astro-Clinic</p>
+                            <p>Melachakar, Sivasagar</p> 
+                            <p>Pin:785640</p>
                         </div>
                     </div>
                 </div>
@@ -294,11 +494,11 @@
                     <div class="map-placeholder">
                         <div class="map-overlay">
                             <h3>Find Us Here</h3>
-                            <p>Our center is located in the heart of Cosmic City</p>
+                            <p>Our center is located in the Melachakar of Historic City, Sivasagar</p>
                         </div>
                         <!-- In a real implementation, you would embed a Google Map here -->
                         <div class="map-image">
-                            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Astro-Clinic Location">
+                            <img src="assets/images/address.jpg" alt="Astro-Clinic Location">
                         </div>
                     </div>
                 </div>
@@ -311,7 +511,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="assets/images/logo_large.jpeg" alt="Astro-Clinic Logo">
+                    <img src="assets/images/logo_large.png" alt="Astro-Clinic Logo">
                     <p>Align Your Destiny with Ancient Wisdom</p>
                 </div>
                 <div class="footer-links">
@@ -323,9 +523,13 @@
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-social">
-                    <h3>Connect With Us</h3>
-                    <div class="social-icons">
+                <div class="footer-social" >
+                    <p><h2>Website Visitors:</h2> </p> 
+                        <div class="counter-number">
+                            <div><strong><?php include 'counter.php'; ?></strong></div> 
+                        </div>
+                    <h3 style="display:none" >Connect With Us</h3>
+                    <div class="social-icons"style="display:none">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -334,17 +538,18 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Astro-Clinic. All rights reserved. | Ancient Wisdom. Precise Astrology. Practical Guidance.</p>
+                <p>&copy; 2026 Astro-Clinic. All rights reserved. | Ancient Wisdom. Precise Astrology. Practical Guidance.</p> 
+                <p>Designed by <a href="https://kuwaleetechsolutions.com/" target="_blank" >Kuwalee Tech Solutions</a></p>
             </div>
         </div>
     </footer>
 
     <!-- Fixed Call and Message Buttons -->
     <div class="fixed-buttons">
-        <a href="tel:+1234567890" class="call-button">
+        <a href="tel:+917002523648" class="call-button">
             <i class="fas fa-phone"></i>
         </a>
-        <a href="https://wa.me/1234567890" class="message-button">
+        <a href="https://wa.me/+917002523648" class="message-button">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>
